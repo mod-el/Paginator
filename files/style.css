@@ -1,0 +1,18 @@
+.zkpag-on, .zkpag-off, .zkpag-special{
+	padding: 3px;
+	margin: 0 1px;
+	font-weight: bold;
+}
+
+.zkpag-on{
+	color: #2d424d;
+	padding: 3px 8px;
+}
+
+a.zkpag-off:link, a.zkpag-off:visited{
+	color: #999;
+}
+
+.zkpag-special img{
+	vertical-align: middle;
+}
