@@ -1,5 +1,4 @@
-<?php
-namespace Model;
+<?php namespace Model\Paginator;
 
 class Paginator{
 	/** @var array */

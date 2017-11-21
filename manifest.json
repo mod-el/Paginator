@@ -1,0 +1,10 @@
+{
+	"name": "Paginator",
+	"description": "A simple paginator utility",
+	"version": "1.2.0",
+	"dependencies": {},
+	"css": [
+		"files/style.css"
+	],
+	"load": false
+}
