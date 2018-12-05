@@ -59,7 +59,7 @@ class Paginator
 		if ($this->options['alphabetic']) {
 			if (
 				!preg_match('/^[a-z]$/i', $this->options['pag'])
-				or (!$this->options['englishLetters'] and !in_array(strtolower($this->options['pag']), array('x', 'y', 'w', 'j', 'k')))
+				or (!$this->options['englishLetters'] and !in_array(strtolower($this->options['pag']), ['x', 'y', 'w', 'j', 'k']))
 			) {
 				$this->options['pag'] = $this->options['uppercase'] ? 'A' : 'a';
 			}
@@ -149,21 +149,29 @@ class Paginator
 		if (count($pages) <= 1)
 			return '';
 
-		$options = array_merge(array(
+		$options = array_merge([
 			'on' => '<span class="zkpag-on">[text]</span>',
 			'off' => '<a href="?p=[p]" class="zkpag-off">[text]</a>',
-			'separator' => ' '
-		), $opt);
+			'separator' => ' ',
+		], $opt);
 
 		if (!array_key_exists('special', $options))
 			$options['special'] = str_replace('zkpag-off', 'zkpag-special', $options['off']);
 
 		$echo = '';
 		foreach ($pages as $cp => $p) {
+			$base = null;
 			if ($cp > 0) $echo .= $options['separator'];
-			if ($p['special']) $echo .= str_replace('[text]', $p['text'], str_replace('[p]', $p['p'], $options['special']));
-			elseif ($p['current']) $echo .= str_replace('[text]', entities($p['text']), $options['on']);
-			else $echo .= str_replace('[text]', entities($p['text']), str_replace('[p]', $p['p'], $options['off']));
+			if ($p['special']) $base = $options['special'];
+			elseif ($p['current']) $base = $options['on'];
+			else $base = $options['off'];
+
+			$text = $p['text'];
+			if (!$p['special'])
+				$text = entities($p['text']);
+
+			if ($base)
+				$echo .= str_replace('[text]', $text, str_replace('[p]', $p['p'], $base));
 		}
 
 		if ($return) return $echo;
