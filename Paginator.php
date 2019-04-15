@@ -76,6 +76,11 @@ class Paginator
 		return true;
 	}
 
+	public function getLimit(): string
+	{
+		return $this->getStartLimit() . ',' . $this->options['perPage'];
+	}
+
 	public function getStartLimit(): int
 	{
 		return ($this->pag - 1) * $this->options['perPage'];
