@@ -154,9 +154,14 @@ class Paginator
 		if (count($pages) <= 1)
 			return '';
 
+		$qry = $_GET;
+		unset($qry['url']);
+		$qry['p'] = '[p]';
+		$qry = str_replace('%5Bp%5D', '[p]', http_build_query($qry));
+
 		$options = array_merge([
 			'on' => '<span class="zkpag-on">[text]</span>',
-			'off' => '<a href="?p=[p]" class="zkpag-off">[text]</a>',
+			'off' => '<a href="?' . $qry . '" class="zkpag-off">[text]</a>',
 			'separator' => ' ',
 		], $opt);
 
