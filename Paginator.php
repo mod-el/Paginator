@@ -27,8 +27,8 @@ class Paginator
 
 	public function __construct(array $options = [])
 	{
-		$this->options['forward'] = '<img src="' . PATH . 'model/Paginator/files/right-arrow.png" alt="" />';
-		$this->options['backward'] = '<img src="' . PATH . 'model/Paginator/files/left-arrow.png" alt="" />';
+		$this->options['forward'] = '<img src="' . PATH . 'model/Paginator/assets/img/right-arrow.png" alt="" />';
+		$this->options['backward'] = '<img src="' . PATH . 'model/Paginator/assets/img/left-arrow.png" alt="" />';
 		$this->setOptions($options);
 	}
 
