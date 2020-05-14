@@ -76,9 +76,9 @@ class Paginator
 		return true;
 	}
 
-	public function getLimit(): string
+	public function getLimit(): ?string
 	{
-		return $this->getStartLimit() . ',' . $this->options['perPage'];
+		return $this->options['perPage'] ? $this->getStartLimit() . ',' . $this->options['perPage'] : null;
 	}
 
 	public function getStartLimit(): int
