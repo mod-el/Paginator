@@ -1,7 +1,7 @@
 {
 	"name": "Paginator",
 	"description": "A simple paginator utility",
-	"version": "1.2.2",
+	"version": "2.0.0",
 	"dependencies": {},
 	"assets-position": "foot",
 	"load": false

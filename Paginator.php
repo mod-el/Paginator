@@ -3,7 +3,7 @@
 class Paginator
 {
 	/** @var array */
-	public $options = [
+	public array $options = [
 		'tot' => null, // Total number of elements
 		'perPage' => null, // Elements per page
 		'totPag' => null, // Total number of pages (you can set either this or the previous two options)
@@ -20,10 +20,10 @@ class Paginator
 		'englishLetters' => true, // English alphabet? Or (as default) Italian one?
 		'uppercase' => true, // The letters should be all uppercase?
 	];
-	/** @var int Total number of pages */
-	public $tot = null;
-	/** @var int Current page */
-	public $pag = null;
+	/** @var int|null Total number of pages */
+	public ?int $tot = null;
+	/** @var int|null Current page */
+	public ?int $pag = null;
 
 	public function __construct(array $options = [])
 	{
@@ -76,14 +76,14 @@ class Paginator
 		return true;
 	}
 
-	public function getLimit(): ?string
+	public function getLimit(): ?int
 	{
-		return $this->options['perPage'] ? $this->getStartLimit() . ',' . $this->options['perPage'] : null;
+		return $this->options['perPage'] ?: null;
 	}
 
-	public function getStartLimit(): int
+	public function getOffset(): int
 	{
-		return ($this->pag - 1) * $this->options['perPage'];
+		return ($this->pag - 1) * (int)$this->options['perPage'];
 	}
 
 	public function get(array $opt = []): array
