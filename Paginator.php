@@ -22,8 +22,8 @@ class Paginator
 	];
 	/** @var int|null Total number of pages */
 	public ?int $tot = null;
-	/** @var int|null Current page */
-	public ?int $pag = null;
+	/** @var int|string|null Current page */
+	public int|string|null $pag = null;
 
 	public function __construct(array $options = [])
 	{
